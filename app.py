@@ -5,11 +5,12 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
 app = Flask(__name__)
-
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///main.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -32,6 +33,7 @@ def Index():
     mylist = zip(news, desc, img, url)
     return render_template('index.html', context=mylist)
 
+from models import News
 
 if __name__ == "__main__":
     app.run(debug=True)
