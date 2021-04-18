@@ -1,43 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>CNN News</title>
+{% extends "base.html" %}
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-<body>
-
-<nav class="navbar navbar-light mb-5 py-4">
-    <nav class="navbar navbar-expand-lg navbar-light ">
-        <a class="navbar-brand" href="#">News Aggregator</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
-  </form>
-    </nav>
-</nav>
+{% block content %}
 
 
-
-<div class="container">
-
-    {% for new, des, i, url in context %}
-    <br>
-    <img src="{{i}}" alt="">
-    <h3>News: </h3> {{new}}
-    <h4>Description: </h4> {{des}}
-    <br>
+    {% for title, descr, img, url in context %}
+        <div class="card col-lg-4 col-md-2 col-sm-1 col-xs-1 my-1 mx-auto" style="width: 18rem;">
+            <img src="{{ img }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ title }}</h5>
+                <p class="card-text">{{ descr }}</p>
+                <a href="{{ url }}" class="btn btn-outline-primary" target="_blank">Read more</a>
+            </div>
+        </div>
     {% endfor %}
 
-
-</div>
-
-
-</body>
-</html>
+{% endblock %}
