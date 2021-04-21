@@ -4,3 +4,4 @@ pyparsing==2.4.7
 SQLAlchemy==1.4.9
 Flask-SQLAlchemy==2.5.1
 newsapi-python==0.2.6
+flask-migrate==2.7.0
