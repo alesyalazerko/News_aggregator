@@ -35,8 +35,7 @@ class News(db.Model):
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    newsapi = NewsApiClient(api_key="87a33682f0fc4efa9f36e2336b721304")
-    topheadlines = newsapi.get_top_headlines(sources="cnn")
+
     articles = topheadlines['articles']
 
 
