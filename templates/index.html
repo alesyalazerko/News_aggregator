@@ -5,11 +5,15 @@
     {% if news %}
 
         {% for new in news %}
-            <div class="card col-lg-4 col-md-2 col-sm-1 col-xs-1 my-1 mx-auto" style="width: 18rem;">
-                <img src="{{ new.urlToImage }}" class="card-img-top" alt="...">
+            <div class="card col-lg-4 col-md-6 col-sm-8 col-xs-8 my-2 mx-auto">
+                <div class="card-header">
+                    <img src="{{ new.urlToImage }}" class="card-img-top" alt="...">
+                </div>
                 <div class="card-body">
                     <h5 class="card-title">{{ new.title }}</h5>
                     <p class="card-text">{{ new.description }}</p>
+                </div>
+                <div class="card-footer">
                     <a href="{{ new.url }}" class="btn btn-outline-primary" target="_blank">Read more</a>
                 </div>
             </div>
