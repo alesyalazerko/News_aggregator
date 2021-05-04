@@ -2,8 +2,14 @@ import os
 from flask import render_template, redirect, url_for
 from newsapi import NewsApiClient
 from datetime import datetime
-from app import app, db
+from app import app, db, login
 from models import *
+
+
+@login.user_loader
+def load_user(id):
+    return User.query.get(id)
+
 
 @app.route('/get_news')
 def get_news_list():
