@@ -21,7 +21,6 @@ def secret():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    # если юзер вошел, не пускаем его на страницу логина
     if current_user.is_authenticated:
         return redirect(url_for('index'))
 
@@ -60,7 +59,8 @@ def logout():
 @app.route('/get_news')
 def get_news_list():
     newsapi = NewsApiClient(api_key=os.environ.get('API_KEY'))
-    topheadlines = newsapi.get_top_headlines(sources="the-verge,bbc-news,cnn")
+    topheadlines = newsapi.get_top_headlines(sources="the-verge,bbc-news,cnn, fox-news,"
+                                                     " politico, abc-news, usa-today, ")
     articles = topheadlines['articles']
 
     for article in articles:
