@@ -14,7 +14,7 @@ def load_user(id):
 @app.route('/get_news')
 def get_news_list():
     newsapi = NewsApiClient(api_key=os.environ.get('API_KEY'))
-    topheadlines = newsapi.get_top_headlines(sources="cnn")
+    topheadlines = newsapi.get_top_headlines(sources="the-verge,bbc-news,cnn")
     articles = topheadlines['articles']
 
     for article in articles:
@@ -31,11 +31,11 @@ def get_news_list():
             db.session.add(new)
             db.session.commit()
         except:
-            pass
+            print(article['title'])
 
     return redirect(url_for('index'))
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    news = News.query.order_by(News.created_at).all()
+    news = News.query.order_by(News.created_at.desc()).all()
     return render_template('index.html', news=news)
